@@ -1,27 +1,40 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/docker-outside-of-docker-compose
 {
-	"name": "Docker from Docker Compose",
-	"dockerComposeFile": "docker-compose.yml",
-	"service": "app",
-	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "name": "ROS 2 Development Container",
+    "privileged": true,
+    "remoteUser": "ben",
+    "dockerComposeFile": "./docker-compose.yml",
+    "service": "ros2-dev-env",
 
-	// Use this environment variable if you need to bind mount your local source code into a new container.
-	"remoteEnv": {
-		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
-	},
-
-	"features": {
-		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
-		"ghcr.io/devcontainers/features/python:1": {},
-		"ghcr.io/devcontainers/features/common-utils:2": {}
-	}
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "docker --version",
-
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+    "workspaceFolder": "/home/ws",
+    "containerEnv": {
+        "DISPLAY": "unix:0",
+        "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST",
+        "ROS_DOMAIN_ID": "42"
+    },
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/home/ws,type=bind",
+        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
+        "source=/dev/dri,target=/dev/dri,type=bind,consistency=cached",
+        // "source=${localWorkspaceFolder}/cache/humble/build,target=/home/ws/build,type=bind",
+        // "source=${localWorkspaceFolder}/cache/humble/install,target=/home/ws/install,type=bind",
+        // "source=${localWorkspaceFolder}/cache/humble/log,target=/home/ws/log,type=bind",
+    ],
+    "postCreateCommand": "sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y && sudo chown -R $(whoami) /home/ws/",
+    "initializeCommand": "mkdir -p cache/humble/build cache/humble/install cache/humble/log",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-azuretools.vscode-docker",
+                "ms-python.vscode-pylance",
+                "ms-python.python",
+                "ms-python.debugpy",
+                "ms-python.mypy-type-checker",
+                "ms-vscode.hexeditor",
+                "ms-python.flake8",
+                "ms-python.black-formatter",
+                "tamasfe.even-better-toml",
+                "mechatroner.rainbow-csv"
+            ]
+        }
+    }
 }
