@@ -1,5 +1,8 @@
 # Note: You can use any Debian/Ubuntu based image you want. 
-FROM mcr.microsoft.com/devcontainers/base:bullseye
+FROM ros:galactic-ros-base
+
+RUN adduser --home /home/user --shell /bin/bash user
+USER user
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
