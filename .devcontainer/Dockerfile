@@ -25,6 +25,6 @@ RUN groupadd --gid $USER_GID $USERNAME \
 USER $USERNAME
 
 ENV SHELL /bin/bash
-RUN echo "source /ros_entrypoint.sh" >> ~/.bashrc
+RUN echo "source /ros_entrypoint.sh && set +e" >> ~/.bashrc
 
 CMD ["/bin/bash"]
