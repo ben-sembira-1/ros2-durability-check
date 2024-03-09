@@ -25,6 +25,8 @@ RUN groupadd --gid $USER_GID $USERNAME \
 USER $USERNAME
 
 ENV SHELL /bin/bash
-RUN echo "source /ros_entrypoint.sh && set +e" >> ~/.bashrc
+RUN echo "source /ros_entrypoint.sh && set +e" >> ~/.profile
+ENV PATH="${PATH}:~/.local/bin"
+RUN pip install pre-commit
 
 CMD ["/bin/bash"]
