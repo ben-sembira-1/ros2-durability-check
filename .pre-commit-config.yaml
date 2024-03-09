@@ -15,3 +15,8 @@ repos:
     -   id: debug-statements
     -   id: double-quote-string-fixer
     -   id: fix-encoding-pragma
+
+-   repo: https://github.com/google/yapf
+    rev: v0.40.2
+    hooks:
+    -   id: yapf
