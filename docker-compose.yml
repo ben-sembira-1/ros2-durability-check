@@ -1,0 +1,10 @@
+version: '3'
+services:
+  publisher:
+    image: ros-sandbox
+    build: ./src
+    command: "./entrypoint.sh ros2 run publisher publisher"
+  subscriber:
+    image: ros-sandbox
+    build: ./src
+    command: "./entrypoint.sh ros2 run subscriber subscriber"
