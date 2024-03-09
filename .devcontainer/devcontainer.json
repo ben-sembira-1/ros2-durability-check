@@ -4,7 +4,6 @@
     "remoteUser": "ben",
     "dockerComposeFile": "./docker-compose.yml",
     "service": "ros2-dev-env",
-
     "workspaceFolder": "/home/ws",
     "containerEnv": {
         "DISPLAY": "unix:0",
@@ -33,6 +32,7 @@
                 "mechatroner.rainbow-csv",
                 "ms-iot.vscode-ros",
                 "eamodio.gitlens",
+                "ZainChen.json"
             ]
         }
     },
