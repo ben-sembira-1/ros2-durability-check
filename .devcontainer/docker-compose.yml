@@ -6,10 +6,9 @@ services:
       context: .
       args:
         USERNAME: "ben"
-    # volumes:
-    #   # Mounts the project folder to '/workspace'. While this file is in .devcontainer,
-    #   # mounts are relative to the first file in the list, which is a level up.
-    #   - ..:/workspace:cached
+    volumes:
+      - ~/.gitconfig:/home/ben/.gitconfig
+      # - ..:/workspace:cached
     entrypoint: /ros_entrypoint.sh
 
     # Overrides default command so things don't shut down after the process ends.
