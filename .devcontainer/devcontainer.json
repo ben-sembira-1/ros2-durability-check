@@ -32,7 +32,8 @@
                 "mechatroner.rainbow-csv",
                 "ms-iot.vscode-ros",
                 "eamodio.gitlens",
-                "ZainChen.json"
+                "ZainChen.json",
+                "GitHub.vscode-github-actions"
             ]
         }
     },
