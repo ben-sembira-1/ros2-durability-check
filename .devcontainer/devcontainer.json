@@ -15,7 +15,7 @@
         "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
         "source=/dev/dri,target=/dev/dri,type=bind,consistency=cached"
     ],
-    "postCreateCommand": "sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y && sudo chown -R $(whoami) /home/ws/ && pre-commit install",
+    "postCreateCommand": "pre-commit install && pre-commit && sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y && sudo chown -R $(whoami) /home/ws/",
     "initializeCommand": "mkdir -p cache/humble/build cache/humble/install cache/humble/log",
     "customizations": {
         "vscode": {
