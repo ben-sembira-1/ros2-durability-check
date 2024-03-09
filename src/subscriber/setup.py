@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from setuptools import setup
 
 package_name = 'subscriber'
@@ -20,7 +21,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "subscriber = subscriber.main:main",
+            'subscriber = subscriber.main:main',
         ],
     },
 )
